@@ -28,6 +28,7 @@
 }
 #create_body {
   padding-left: 4%;
+  padding-bottom: 4%;
   width: 96%;
   background-color: #becadd;
   padding-top: 4%;
@@ -76,6 +77,16 @@
   height: 5%;
   font-size: 1vw;
   border-radius: 5px;
-  margin-top: 1%
+  margin-top: 1%;
+  margin-bottom: 1%
+
+}
+.login_input {
+  height: 4%;
+  width: 15%;
+  border-radius: 5px
+}
+
+.val_error {
 
 }

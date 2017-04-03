@@ -53,6 +53,7 @@ class ApprenticeNews < Sinatra::Application
     erb :submitted, :locals => {'link' => link, 'info' => info}
   end
 
+
   if app_file == $0
     run!
   end
