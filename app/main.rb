@@ -42,6 +42,10 @@ class ApprenticeNews < Sinatra::Application
                             }
   end
 
+  get '/create_account' do
+    erb :create, locals: { title: 'Create Account' }
+  end
+
   post '/submit' do
     link = params[:link]
     info = params[:info]
@@ -49,10 +53,8 @@ class ApprenticeNews < Sinatra::Application
     erb :submitted, :locals => {'link' => link, 'info' => info}
   end
 
-
   if app_file == $0
     run!
   end
-
 
 end

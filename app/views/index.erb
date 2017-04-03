@@ -1,6 +1,21 @@
 <head>
   <title><%= title %></title>
   <link type="text/css" rel="stylesheet" href="/styles.css" />
+
+  <script>
+    function toggleDiv(id) {
+
+      var hideMe = document.getElementById(id);
+
+      if(hideMe.style.display == 'none')
+        hideMe.style.display = 'block';
+      else
+        hideMe.style.display = 'none';
+
+    }
+
+  </script>
+
 </head>
 
 <body>
@@ -9,15 +24,25 @@
 
 <div class="banner">
   <h1><%= title %></h1>
-  <a href = "/submit">
-    <h2 class="under_title_link">Submit</h2>
-  </a>
+  <a href = "/submit" class="under_title_link">Submit</a>
+  <a class="under_title_link" onclick="toggleDiv('hidden');">Login</a>
+  <a href = "/create_account" class="under_title_link">Create Account</a>
 </div>
+
+<div id="hidden">
+  <form method="post">
+    E-mail:<br>
+    <input class="login_input" type="email" name="email"/><br><br>
+    Password:<br>
+    <input class="login_input" type="password" name="password"/><br><br>
+    <input type="submit" value="Login">
+  </form>
+</div>
+
 
 <div id="bulk_box">
   <ul>
   <% @everything.each do |stuff| %>
-
     <li>
       <a href = "<%= stuff['url'] %>" ><h3 class="homepage_links"><%= stuff['url'] %></h3></a>
       <p><%= stuff['title'] %></p>
@@ -27,5 +52,6 @@
   </ul>
 
 </div>
+
 
 </body>

@@ -25,7 +25,14 @@
   padding-top: 4%;
   font-family: sans-serif;
   border-top: 2px dashed white
-
+}
+#create_body {
+  padding-left: 4%;
+  width: 96%;
+  background-color: #becadd;
+  padding-top: 4%;
+  font-family: sans-serif;
+  border-top: 2px dashed white
 }
 
 .homepage_links {
@@ -38,10 +45,12 @@
 .under_title_link {
   color: #072b66;
   text-decoration: none;
+  padding-right: 5%
 }
 .under_title_link:hover {
   color: #75787c;
   text-decoration: underline;
+  cursor: hand
 }
 
 #info_input { height: 40%;
@@ -49,4 +58,24 @@
 }
 #url_input {  width: 30%;
               height: 10%
+}
+
+#hidden {
+  padding-top: 1%;
+  padding-left: 4%;
+  width: 96%;
+  background-color: #6b8dc4;
+  display: none;
+  border-top: 2px dashed white;
+  border-bottom: 2px solid white;
+  font-family: sans-serif;
+}
+
+.create {
+  width: 20%;
+  height: 5%;
+  font-size: 1vw;
+  border-radius: 5px;
+  margin-top: 1%
+
 }
