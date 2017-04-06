@@ -36,14 +36,18 @@
     <input class="login_input" type="submit" value="Login">
   </form>
 </div>
-
-
 <div id="bulk_box">
   <ul>
   <% @everything.each do |stuff| %>
     <li>
       <a href = "<%= stuff['url'] %>" ><h3 class="homepage_links"><%= stuff['url'] %></h3></a>
       <p><%= stuff['title'] %></p>
+      <% button_up_name = "up #{stuff['id']}" %>
+      <% button_down_name = "down #{stuff['id']}" %>
+      <form method="post"><button name="vote_button" type="submit" value="<%= button_up_name %>">^</button>
+      <%= stuff['score'] %>
+      <button type="submit" name="vote_button" value="<%= button_down_name %>">v</button></form>
+
       <p><%= '-' * 50 %></br></p>
     </li>
   <% end %>

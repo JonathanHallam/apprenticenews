@@ -1,0 +1,37 @@
+<head>
+  <title><%= title %></title>
+  <link type="text/css" rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+
+<div class="banner">
+  <h1><%= title %></h1>
+  <a href = "/submit" class="under_title_link">Submit</a>
+  <a href = "/" class="under_title_link">Logout</a>
+</div>
+
+
+<div class="hello">
+  Hello
+<% @name.each do |fname| %>
+  <%= fname['firstname'] %>
+  <% end %>
+</h3>
+</div>
+
+<div id="bulk_box">
+  <ul>
+  <% @everything.each do |stuff| %>
+    <li>
+      <a href = "<%= stuff['url'] %>" ><h3 class="homepage_links"><%= stuff['url'] %></h3></a>
+      <p><%= stuff['title'] %></p>
+      <p><%= '-' * 50 %></br></p>
+    </li>
+  <% end %>
+  </ul>
+
+</div>
+
+
+</body>

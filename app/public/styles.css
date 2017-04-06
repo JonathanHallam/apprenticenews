@@ -1,3 +1,4 @@
+
 .banner {
   width: 95%;
   background-color: #8caadb;
@@ -54,10 +55,12 @@
   cursor: hand
 }
 
-#info_input { height: 40%;
+#info_input {
+  height: 40%;
               width: 30%
 }
-#url_input {  width: 30%;
+#url_input {
+  width: 30%;
               height: 10%
 }
 
@@ -88,5 +91,17 @@
 }
 
 .val_error {
+
+}
+
+.hello {
+  padding-left: 4%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 96%;
+  background-color: #6b8dc4;
+  border-top: 2px dashed white;
+  border-bottom: 2px solid white;
+  font-family: sans-serif;
 
 }
