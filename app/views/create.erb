@@ -6,21 +6,135 @@
 <body>
   <div class="banner">
     <h1><%= title %></h1>
-    <a href = "/" class="under_title_link">Home</a>
+    <a href="/"class="under_title_link">Home</a>
   </div>
 
   <div id="create_body">
-    <form method="post">
-      <input type="text" placeholder="First Name" name="name" class="create"><br>
+    <form method="post" name="createUser" onsubmit="return Validate()" id="create_user">
+
+      <input type="text" placeholder="First Name" name="first_name" class="create"><br>
+      <div id="first_name_error" class="val_error"></div>
+
       <input type="text" placeholder="Surname" name="surname" class="create"><br>
+      <div id="surname_error" class="val_error"></div>
       <br><br>
+
+
       <input type="email" placeholder="E-mail"name="email" class="create"><br>
-      <input type="email" placeholder="Confirm E-mail"name="email" class="create"><br>
+      <div id="email_error" class="val_error"></div>
+
+      <input type="email" placeholder="Confirm E-mail"name="emailConfirm" class="create"><br>
+      <div id="email_match_error" class="val_error"></div>
       <br><br>
+
+
       <input type="password" placeholder="Password" name="password" class="create"><br>
-      <input type="password" placeholder="Confirm Password" name="password" class="create"><br>
+      <div id="password_error" class="val_error"></div>
+
+      <input type="password" placeholder="Confirm Password" name="passwordConfirm" class="create"><br>
+      <div id="password_match_error" class="val_error"></div>
       <br><br>
+      <input type="submit" value="Create Account" class="create"/>
 
     </form>
   </div>
+
+  <script>
+    // GETTING ALL OF THE INPUT FIELDS
+    var first_name = document.getElementById("create_user").elements.namedItem("first_name");
+    var surname = document.getElementById("create_user").elements.namedItem("surname");
+    var email = document.getElementById("create_user").elements.namedItem("email");
+    var password = document.getElementById("create_user").elements.namedItem("password");
+    var email_confirm = document.getElementById("create_user").elements.namedItem("emailConfirm");
+    var password_confirm = document.getElementById("create_user").elements.namedItem("passwordConfirm");
+    // GETTING ALL OF THE ERROR OBJECTS
+    var first_name_error = document.getElementById("first_name_error");
+    var surname_error = document.getElementById("surname_error");
+    var email_error = document.getElementById("email_error");
+    var password_error = document.getElementById("password_error");
+    var email_match_error = document.getElementById("email_match_error");
+    var password_match_error = document.getElementById("password_match_error");
+    // SETTING THE EVENT LISTENTERS
+    first_name.addEventListener("blur", firstNameVerify, true);
+    surname.addEventListener("blur", surnameVerify, true);
+    email.addEventListener("blur", emailVerify, true);
+    password.addEventListener("blur", passwordVerify, true);
+    function Validate(){
+      // VALIDATE FIRST NAME
+      if(first_name.value == ""){
+        first_name_error.textContent = "First Name Is Required";
+        first_name.style.border = "1px solid red";
+        first_name.focus();
+        return false;
+      }
+      // VALIDATE SURNAME
+      if(surname.value == ""){
+        surname_error.textContent = "Surname Is Required";
+        surname.style.border = "1px solid red";
+        surname.focus();
+        return false;
+      }
+      // VALIDATE EMAIL
+      if(email.value == ""){
+        email_error.textContent = "E-mail Is Required";
+        email.style.border = "1px solid red";
+        email.focus();
+        return false;
+      }
+      // VALIDATE PASSWORD
+      if(password.value == ""){
+        password_error.textContent = "Password Is Required";
+        password.style.border = "1px solid red";
+        password.focus();
+        return false;
+      }
+      // EMAIL MATCH
+      if (email.value != email_confirm.value) {
+        email_match_error.textContent = "E-mail addresses do not match";
+        email.style.border = "2px solid red";
+        email_confirm.style.border = "2px solid red";
+        email.focus();
+        return false;
+      }
+      // PASSWORD MATCH
+      if (password.value != password_confirm.value) {
+        password_match_error.textContent = "Passwords do not match";
+        password.style.border = "2px solid red";
+        password_confirm.style.border = "2px solid red";
+        password.focus();
+        return false;
+      }
+    }
+    // ADDING EVENT LISTENTERS
+    function firstNameVerify(){
+      if (first_name.value != "") {
+        first_name_error.innerHTML = "";
+        first_name.style.border = "1px solid black";
+        return true;
+      }
+    }
+    function surnameVerify(){
+      if (surname.value != "") {
+        surname_error.innerHTML = "";
+        surname.style.border = "1px solid black";
+        return true;
+      }
+    }
+    function emailVerify(){
+      if (email.value != "") {
+        email_error.innerHTML = "";
+        email.style.border = "1px solid black";
+        return true;
+      }
+    }
+    function passwordVerify(){
+      if (password.value != "") {
+        password_error.innerHTML = "";
+        password.style.border = "1px solid black";
+        return true;
+      }
+    }
+  </script>
+
+
 </body>

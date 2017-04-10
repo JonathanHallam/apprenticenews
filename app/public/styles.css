@@ -1,3 +1,4 @@
+
 .banner {
   width: 95%;
   background-color: #8caadb;
@@ -12,7 +13,8 @@
   width: 98%;
   background-color: #becadd;
   padding: 1%;
-  border-top: 2px dashed white
+  border-top: 2px dashed white;
+  font-family: sans-serif;
 
 }
 
@@ -28,6 +30,7 @@
 }
 #create_body {
   padding-left: 4%;
+  padding-bottom: 4%;
   width: 96%;
   background-color: #becadd;
   padding-top: 4%;
@@ -53,10 +56,12 @@
   cursor: hand
 }
 
-#info_input { height: 40%;
+#info_input {
+  height: 40%;
               width: 30%
 }
-#url_input {  width: 30%;
+#url_input {
+  width: 30%;
               height: 10%
 }
 
@@ -76,6 +81,32 @@
   height: 5%;
   font-size: 1vw;
   border-radius: 5px;
-  margin-top: 1%
+  margin-top: 1%;
+  margin-bottom: 1%
 
+}
+.login_input {
+  height: 5%;
+  width: 15%;
+  border-radius: 5px
+}
+
+.val_error {
+
+}
+
+.hello {
+  padding-left: 4%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 96%;
+  background-color: #6b8dc4;
+  border-top: 2px dashed white;
+  border-bottom: 2px solid white;
+  font-family: sans-serif;
+
+}
+
+.comment_boxes {
+  display: none;
 }
