@@ -47,6 +47,7 @@
     var password = document.getElementById("create_user").elements.namedItem("password");
     var email_confirm = document.getElementById("create_user").elements.namedItem("emailConfirm");
     var password_confirm = document.getElementById("create_user").elements.namedItem("passwordConfirm");
+
     // GETTING ALL OF THE ERROR OBJECTS
     var first_name_error = document.getElementById("first_name_error");
     var surname_error = document.getElementById("surname_error");
@@ -54,12 +55,15 @@
     var password_error = document.getElementById("password_error");
     var email_match_error = document.getElementById("email_match_error");
     var password_match_error = document.getElementById("password_match_error");
+
     // SETTING THE EVENT LISTENTERS
     first_name.addEventListener("blur", firstNameVerify, true);
     surname.addEventListener("blur", surnameVerify, true);
     email.addEventListener("blur", emailVerify, true);
     password.addEventListener("blur", passwordVerify, true);
+
     function Validate(){
+
       // VALIDATE FIRST NAME
       if(first_name.value == ""){
         first_name_error.textContent = "First Name Is Required";
@@ -67,6 +71,7 @@
         first_name.focus();
         return false;
       }
+
       // VALIDATE SURNAME
       if(surname.value == ""){
         surname_error.textContent = "Surname Is Required";
@@ -74,6 +79,7 @@
         surname.focus();
         return false;
       }
+
       // VALIDATE EMAIL
       if(email.value == ""){
         email_error.textContent = "E-mail Is Required";
@@ -81,6 +87,7 @@
         email.focus();
         return false;
       }
+
       // VALIDATE PASSWORD
       if(password.value == ""){
         password_error.textContent = "Password Is Required";
@@ -88,6 +95,7 @@
         password.focus();
         return false;
       }
+
       // EMAIL MATCH
       if (email.value != email_confirm.value) {
         email_match_error.textContent = "E-mail addresses do not match";
@@ -96,6 +104,7 @@
         email.focus();
         return false;
       }
+
       // PASSWORD MATCH
       if (password.value != password_confirm.value) {
         password_match_error.textContent = "Passwords do not match";
@@ -104,7 +113,9 @@
         password.focus();
         return false;
       }
+
     }
+
     // ADDING EVENT LISTENTERS
     function firstNameVerify(){
       if (first_name.value != "") {
@@ -134,6 +145,7 @@
         return true;
       }
     }
+
   </script>
 
 

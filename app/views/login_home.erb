@@ -2,6 +2,7 @@
   <title><%= title %></title>
   <link type="text/css" rel="stylesheet" href="/styles.css" />
 
+
   <script>
     function toggleDiv(id) {
 
@@ -15,12 +16,9 @@
     }
 
   </script>
-
 </head>
 
 <body>
-
-
 
 <div class="banner">
   <h1><%= title %></h1>
@@ -39,12 +37,14 @@
     <input class="login_input" type="submit" value="Login">
   </form>
 </div>
+
 <div id="bulk_box">
   <ul>
   <% @everything.each do |stuff| %>
     <li>
       <a href = "<%= stuff['url'] %>" ><h3 class="homepage_links"><%= stuff['url'] %></h3></a>
       <p><%= stuff['title'] %></p>
+
       <% button_up_name = "up #{stuff['id']}" %>
       <% button_down_name = "down #{stuff['id']}" %>
       <% comment_name = "comment #{stuff['id']}" %>

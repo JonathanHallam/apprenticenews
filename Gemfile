@@ -5,6 +5,7 @@ ruby '2.4.0'
 
 gem "pg"
 gem "sinatra"
+gem "gibberish"
 
 group :test do
   gem "rspec"

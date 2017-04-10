@@ -79,17 +79,20 @@ class ApprenticeNews < Sinatra::Application
     end
     db_connection do |conn|
       conn.exec("UPDATE submissions SET score = '#{@score}' WHERE id='#{id.to_i}'")
+
     end
   end
 
   def comment(parent_id, comment)
     db_connection do |conn|
       conn.exec("INSERT INTO comments (comment, parent_id) VALUES ('#{comment}', '#{parent_id}')")
+
     end
   end
 
   get '/' do
     @everything = everything
+
     @comments = comments
     erb :index, locals: { title: 'Apprentice News', wrong: ' '}
   end
@@ -97,11 +100,9 @@ class ApprenticeNews < Sinatra::Application
   get '/submit' do
     erb :submit, locals: {  title: 'Submit'  }
   end
-
   get '/create_account' do
     erb :create, locals: { title: 'Create Account' }
   end
-
   post '/submit' do
     link = params[:link]
     info = params[:info]
@@ -121,6 +122,7 @@ class ApprenticeNews < Sinatra::Application
   post '/' do
     @everything = everything
     @comments = comments
+
     @jeff = []
     params.each do |key, value|
       @jeff << key << value
@@ -130,6 +132,7 @@ class ApprenticeNews < Sinatra::Application
     password = params[:password]
     if check_signin_data(email, password) == true
       @name = get_name(email)
+
       @name.each do |x|
         @name1 = x['firstname']
       end
@@ -146,6 +149,7 @@ class ApprenticeNews < Sinatra::Application
       parent_id = id[1].to_i
       comment(parent_id, comment)
       erb :index, locals: {title: 'Apprentice News', wrong: ''}
+
     end
 
   end
