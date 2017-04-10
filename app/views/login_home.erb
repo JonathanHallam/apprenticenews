@@ -1,6 +1,21 @@
 <head>
   <title><%= title %></title>
   <link type="text/css" rel="stylesheet" href="/styles.css" />
+
+
+  <script>
+    function toggleDiv(id) {
+
+      var hideMe = document.getElementById(id);
+
+      if(hideMe.style.display == 'none')
+        hideMe.style.display = 'block';
+      else
+        hideMe.style.display = 'none';
+
+    }
+
+  </script>
 </head>
 
 <body>
@@ -8,16 +23,19 @@
 <div class="banner">
   <h1><%= title %></h1>
   <a href = "/submit" class="under_title_link">Submit</a>
-  <a href = "/" class="under_title_link">Logout</a>
+  <a class="under_title_link" onclick="toggleDiv('hidden');">Login</a>
+  <a href = "/create_account" class="under_title_link">Create Account</a>
+</div>
+<div class="hello">
+  Hello <%= name %>!
 </div>
 
-
-<div class="hello">
-  Hello
-<% @name.each do |fname| %>
-  <%= fname['firstname'] %>
-  <% end %>
-</h3>
+<div id="hidden">
+  <form method="post">
+    <input class="login_input" placeholder="E-mail" type="email" name="email"/><br><br>
+    <input class="login_input" placeholder="Password" type="password" name="password"/><br><br>
+    <input class="login_input" type="submit" value="Login">
+  </form>
 </div>
 
 <div id="bulk_box">
@@ -26,6 +44,19 @@
     <li>
       <a href = "<%= stuff['url'] %>" ><h3 class="homepage_links"><%= stuff['url'] %></h3></a>
       <p><%= stuff['title'] %></p>
+
+      <% button_up_name = "up #{stuff['id']}" %>
+      <% button_down_name = "down #{stuff['id']}" %>
+      <% comment_name = "comment #{stuff['id']}" %>
+      <form method="post"><button name="vote_button" type="submit" value="<%= button_up_name %>">^</button>
+      <%= stuff['score'] %>
+      <button type="submit" name="vote_button" value="<%= button_down_name %>">v</button></form>
+
+      <form method="post">
+        <textarea class="comment" placeholder="comment" type="text" name="<%= comment_name %>"></textarea>
+        <button type="submit">submit</button>
+      </form>
+
       <p><%= '-' * 50 %></br></p>
     </li>
   <% end %>

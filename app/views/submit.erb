@@ -6,7 +6,9 @@
 <body>
   <div class="banner">
     <h1><%= title %></h1>
-    <a href = "/" class="under_title_link">Home</a>
+
+    <a class="under_title_link" href = "/">Home</a>
+
   </div>
 
   <div id="submit_body">
@@ -16,8 +18,8 @@
       <input id="url_input" type="url" value="http://www." pattern="https?://.+" required name="link"/><br><br>
       Info:<br>
       <textarea cols="40" rows="8" id="info_input" type="text" name="info" ></textarea><br><br>
-      <input type="submit" value="Submit">
-      <input type="reset" value="Clear">
+      <input class="login_input" type="submit" value="Submit"/>
+      <input class="login_input" type="reset" value="Clear"/>
     </form>
   </div>
 </body>

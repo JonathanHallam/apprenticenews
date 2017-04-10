@@ -28,7 +28,7 @@
   <a class="under_title_link" onclick="toggleDiv('hidden');">Login</a>
   <a href = "/create_account" class="under_title_link">Create Account</a>
 </div>
-
+<%= wrong %>
 <div id="hidden">
   <form method="post">
     <input class="login_input" placeholder="E-mail" type="email" name="email"/><br><br>
@@ -40,13 +40,43 @@
   <ul>
   <% @everything.each do |stuff| %>
     <li>
-      <a href = "<%= stuff['url'] %>" ><h3 class="homepage_links"><%= stuff['url'] %></h3></a>
+      <a href = "<%= stuff['url'] %>" >
+        <h3 class="homepage_links">
+          <% url = stuff['url'] %>
+          <% if url[7] == "/" %>
+            <%= url[8..-1] %>
+          <% else %>
+            <%= url[7..-1] %>
+          <% end %>
+        </h3>
+      </a>
       <p><%= stuff['title'] %></p>
       <% button_up_name = "up #{stuff['id']}" %>
       <% button_down_name = "down #{stuff['id']}" %>
-      <form method="post"><button name="vote_button" type="submit" value="<%= button_up_name %>">^</button>
-      <%= stuff['score'] %>
-      <button type="submit" name="vote_button" value="<%= button_down_name %>">v</button></form>
+      <% comment_name = "comment #{stuff['id']}" %>
+      <form method="post">
+        <button name="vote_button" type="submit" value="<%= button_up_name %>">^</button>
+        <%= stuff['score'] %>
+        <button type="submit" name="vote_button" value="<%= button_down_name %>">v</button>&nbsp&nbsp&nbsp
+        <a onclick="toggleDiv('<%= comment_name %>')" style="cursor: hand; text-decoration: underline">comment</a>
+      </form>
+
+      <div id="<%= comment_name %>" class="comment_boxes">
+        <form method="post">
+          <textarea class="comment" placeholder="comment" type="text" name="'<%= comment_name %>'"></textarea>
+          <button type="submit">submit</button>
+        </form>
+        ---------<br>
+        <% @comments.each do |comm| %>
+          <% if comm['parent_id'] == stuff['id'] %>
+            <%= comm['comment'] %><br>
+            ---------<br>
+          <% else %>
+          <% end %>
+        <% end %>
+
+      </div>
+
 
       <p><%= '-' * 50 %></br></p>
     </li>
